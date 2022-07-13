@@ -1,68 +1,58 @@
-import React, { useState } from "react";
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-import moment from "moment";
-import "../styles/days.scss";
-import styles from "../styles/Home.module.css";
-import dayjs from "dayjs";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import dayjs from "dayjs";
 
 const SCHOOLCODE = 7150658;
 const LOCALCODE = "C10";
 const TODAY = dayjs().format("YYYYMM");
-
 const API = `https://open.neis.go.kr/hub/SchoolSchedule?Type=Json&ATPT_OFCDC_SC_CODE=${LOCALCODE}&SD_SCHUL_CODE=${SCHOOLCODE}&AA_YMD=${TODAY}`;
 
 export default function Days() {
-    const marks: string[] = [];
-    const content: string[][] = [];
+    const [content, setContent] = useState<any[]>([]);
+    const tempContent:any[] = [];
+    useEffect(() => {
+        axios.get(API).then((response: any) => {
+            console.log(response.data.SchoolSchedule[1].row.length);
 
-    axios.get(API).then((response) => {
-        for (let i = 0; i < response.data.SchoolSchedule[1].row.length; i++) {
-            if (
-                response.data.SchoolSchedule[1].row[i].EVENT_NM !== "토요휴업일"
+            for (
+                let i = 0;
+                i < response.data.SchoolSchedule[1].row.length;
+                i++
             ) {
-                content.push([
-                    response.data.SchoolSchedule[1].row[i].AA_YMD,
-                    response.data.SchoolSchedule[1].row[i].EVENT_NM,
-                ]);
-                marks.push(response.data.SchoolSchedule[1].row[i].AA_YMD);
+                if (
+                    response.data.SchoolSchedule[1].row[i].EVENT_NM !==
+                    "토요휴업일"
+                ) {
+                    // setContent((prev) => [
+                    //     ...prev,
+                    //     {
+                    //         date: response.data.SchoolSchedule[1].row[i].AA_YMD,
+                    //         content:
+                    //             response.data.SchoolSchedule[1].row[i].EVENT_NM,
+                    //     },
+                    // ]);
+                    tempContent.push({
+                        date: response.data.SchoolSchedule[1].row[i].AA_YMD,
+                        content:
+                            response.data.SchoolSchedule[1].row[i].EVENT_NM,
+                    });
+                }
             }
-        }
-        console.log(marks);
-        console.log(content);
-    });
-
-    const [value, onChange] = useState(new Date());
-
-    // class="react-calendar__tile react-calendar__month-view__days__day highlight"
+            setContent(tempContent)
+        });
+    }, []);
 
     return (
-        <div
-            style={{
-                display: "flex",
-                justifyContent: "space-around",
-                height: "calc(100vh - 54px)",
-            }}
-        >
-            <Calendar
-                onChange={onChange}
-                value={value}
-                locale="ko"
-                tileClassName={({ date, view }) => {
-                    if (
-                        marks.find((x) => x === moment(date).format("YYYYMMDD"))
-                    ) {
-                        return "highlight";
-                    }
-                    return null;
-                }}
-            />
-            <ul className="days-board">
-                {marks.map((i, ix) => {
-                    return <li key={ix}>{i}</li>;
-                })}
-            </ul>
+        <div>
+            {content.map((i, ix) => {
+                return (
+                    <div key={ix}>
+                        <li>
+                            {i.date} {i.content}
+                        </li>
+                    </div>
+                );
+            })}
         </div>
     );
 }

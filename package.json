@@ -9,13 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/sass": "^1.43.1",
     "axios": "^0.27.2",
     "dayjs": "^1.11.3",
     "moment": "^2.29.4",
     "next": "12.2.2",
     "react": "18.2.0",
     "react-calendar": "^3.7.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "sass": "^1.53.0"
   },
   "devDependencies": {
     "@types/node": "18.0.3",
