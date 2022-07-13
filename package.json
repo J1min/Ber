@@ -1,5 +1,5 @@
 {
-  "name": "ber1",
+  "name": "dq2d121d12312ed",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,12 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.27.2",
+    "dayjs": "^1.11.3",
+    "moment": "^2.29.4",
     "next": "12.2.2",
     "react": "18.2.0",
+    "react-calendar": "^3.7.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@types/node": "18.0.3",
+    "@types/react": "18.0.15",
+    "@types/react-calendar": "^3.5.1",
+    "@types/react-dom": "18.0.6",
     "eslint": "8.19.0",
-    "eslint-config-next": "12.2.2"
+    "eslint-config-next": "12.2.2",
+    "typescript": "4.7.4"
   }
 }
