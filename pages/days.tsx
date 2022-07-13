@@ -9,7 +9,7 @@ const API = `https://open.neis.go.kr/hub/SchoolSchedule?Type=Json&ATPT_OFCDC_SC_
 
 export default function Days() {
     const [content, setContent] = useState<any[]>([]);
-    const tempContent:any[] = [];
+    const tempContent: object[] = [];
     useEffect(() => {
         axios.get(API).then((response: any) => {
             console.log(response.data.SchoolSchedule[1].row.length);
@@ -38,13 +38,13 @@ export default function Days() {
                     });
                 }
             }
-            setContent(tempContent)
+            setContent(tempContent);
         });
     }, []);
 
     return (
         <div>
-            {content.map((i, ix) => {
+            {content.map((i, ix: number) => {
                 return (
                     <div key={ix}>
                         <li>

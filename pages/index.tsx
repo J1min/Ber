@@ -7,7 +7,6 @@ const Home: NextPage = () => {
     return (
         <div className={styles.container}>
             안녕하세요 저 그냥 넥스트JS로 할려구요
-            안녕
         </div>
     );
 };
