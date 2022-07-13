@@ -9,21 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.3",
     "@types/sass": "^1.43.1",
     "axios": "^0.27.2",
+    "babel-plugin-styled-components": "^2.0.7",
     "dayjs": "^1.11.3",
     "moment": "^2.29.4",
     "next": "12.2.2",
     "react": "18.2.0",
     "react-calendar": "^3.7.0",
     "react-dom": "18.2.0",
-    "sass": "^1.53.0"
+    "sass": "^1.53.0",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@types/node": "18.0.3",
     "@types/react": "18.0.15",
     "@types/react-calendar": "^3.5.1",
     "@types/react-dom": "18.0.6",
+    "@types/styled-components": "^5.1.25",
+    "@types/swiper": "^6.0.0",
     "eslint": "8.19.0",
     "eslint-config-next": "12.2.2",
     "typescript": "4.7.4"

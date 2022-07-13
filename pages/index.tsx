@@ -1,14 +1,21 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import Slider from "../components/slider";
+import Project from "../components/project";
+import Post from "../components/post";
+import Header from "../components/header";
+import React from "react";
 
-const Home: NextPage = () => {
+const Main: NextPage = () => {
     return (
-        <div className={styles.container}>
-            안녕하세요 저 그냥 넥스트JS로 할려구요
+        <div>
+            <Header/>
+            <Slider />
+            <div id="section">
+                <Project />
+                <Post />
+            </div>
         </div>
     );
 };
-
-export default Home;
+export default Main;

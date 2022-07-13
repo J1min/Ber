@@ -1,0 +1,20 @@
+$main: #ffffff;
+
+.slide {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+.swiper-pagenation-bullet {
+  background-color: $main !important;
+}
+.swiper-pagination-bullet {
+  background-color: $main !important;
+}
+.swiper-button-prev {
+  color: $main !important;
+}
+.swiper-button-next {
+  color: $main !important;
+}
